@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170714135700) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.money "amount", scale: 2, default: "0.0"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
