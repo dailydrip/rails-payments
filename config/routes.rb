@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/subscriptions' => 'subscriptions#index'
   post '/subscriptions/subscribe' => 'subscriptions#subscribe'
 
