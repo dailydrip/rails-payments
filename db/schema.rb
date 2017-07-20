@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20170719190332) do
     t.string "plan_id"
     t.money "amount", scale: 2
     t.string "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

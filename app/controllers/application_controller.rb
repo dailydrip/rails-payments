@@ -7,15 +7,14 @@ class ApplicationController < ActionController::Base
   end
 
   def generate_braintree_client_token
-    result = Braintree::Customer.create(
-      :first_name => "Jen",
-      :last_name => "Smith",
-      :company => "Braintree",
-      :email => "jen@example.com",
-      :phone => "312.555.1234",
-      :fax => "614.555.5678",
-      :website => "www.example.com"
-    )
-    Braintree::ClientToken.generate(customer_id: result.customer.id)
+    if user_signed_in?
+      result = Braintree::Customer.create(
+        :first_name => current_user.first_name,
+        :last_name => current_user.last_name,
+        :email => current_user.email,
+        :phone => current_user.phone,
+      )
+      Braintree::ClientToken.generate(customer_id: result.customer.id)
+    end
   end
 end
