@@ -23,6 +23,15 @@ integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
 
 <body>
   <div class="container">
+    <% if user_signed_in? %><a href="#"><%= current_user.email %></a><% end %>
+    <% if user_signed_in? %>
+      <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        Entrar
+      <% end %>
+    <% end %>
+
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: "alert alert-info" %>
     <% end %>
