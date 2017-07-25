@@ -1,7 +1,11 @@
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <script>
+  //Drop in
   braintree.setup(gon.client_token, 'dropin', { container: 'dropin_monthly', form: 'dropin_monthly' });
-braintree.setup(gon.client_token, 'dropin', { container: 'dropin_annual', form: 'dropin_annual' });
+  braintree.setup(gon.client_token, 'dropin', { container: 'dropin_annual', form: 'dropin_annual' });
+  // Custom
+  braintree.setup(gon.client_token, 'custom', { id: 'custom_form_monthly'});
+  braintree.setup(gon.client_token, 'custom', { id: 'custom_form_annual'});
 </script>
 
 <div>
@@ -12,7 +16,37 @@ braintree.setup(gon.client_token, 'dropin', { container: 'dropin_annual', form: 
       <li><%= subscription.plan_id %> - <%= subscription.amount %></li>
     <% end %>
   </ul>
+  <h1> Customised</h1>
+  <h3> Subscribe to a plan </h3>
 
+  <div class="well">
+    <div class="form-container">
+      <%= form_tag subscriptions_custom_subscribe_path, method: :post, id: 'custom_form_monthly' do %>
+        <p>Please enter your payment details:</p>
+        <%= hidden_field_tag :plan_id, 'monthly' %>
+        <%= hidden_field_tag :amount, '10' %>
+        <input data-braintree-name="number" value="4111111111111111">
+        <input data-braintree-name="expiration_date" value="10/20">
+        <%= submit_tag "Subscribe to monhtly plan - $10", class: "btn btn-large" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="well">
+    <div class="form-container">
+      <%= form_tag subscriptions_custom_subscribe_path, method: :post, id: 'custom_form_annual' do %>
+        <p>Please enter your payment details:</p>
+        <%= hidden_field_tag :plan_id, 'annual' %>
+        <%= hidden_field_tag :amount, '200' %>
+        <input data-braintree-name="number" value="4111111111111111">
+        <input data-braintree-name="expiration_date" value="10/20">
+        <%= submit_tag "Subscribe to annual plan - $200", class: "btn btn-large" %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <h1> Drop In UI </h1>
   <h3> Subscribe to a plan </h3>
 
   <div class="well">

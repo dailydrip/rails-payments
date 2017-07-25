@@ -14,7 +14,9 @@ class ApplicationController < ActionController::Base
         :email => current_user.email,
         :phone => current_user.phone,
       )
-      Braintree::ClientToken.generate(customer_id: result.customer.id)
+      customer_id = result.customer.id
+      current_user.update(customer_id_braintree: customer_id)
+      Braintree::ClientToken.generate(customer_id: customer_id)
     end
   end
 end
