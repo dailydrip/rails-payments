@@ -9,11 +9,33 @@ class SubscriptionsController < ApplicationController
   def show
   end
 
+  def custom_subscribe
+    result_payment = Braintree::PaymentMethod.create(
+      :customer_id => current_user.customer_id_braintree,
+      :payment_method_nonce => params[:payment_method_nonce]
+    )
+
+    if result_payment.success?
+      result = Braintree::Subscription.create(
+        :payment_method_token => result_payment.payment_method.token,
+        :plan_id => params[:plan_id]
+      )
+      handle_result_subscription(result)
+    else
+      redirect_back(fallback_location: root_path, notice: 'Something went wrong creating your payment method! :/')
+    end
+  end
+
   def subscribe
     result = Braintree::Subscription.create(
       :payment_method_nonce => params[:payment_method_nonce],
-      :plan_id => "monhtly"
+      :plan_id => params[:plan_id]
     )
+
+    handle_result_subscription(result)
+  end
+
+  private def handle_result_subscription(result)
     if result.success?
       Subscription.create(amount: params[:amount], user: current_user, plan_id: params[:plan_id])
       redirect_back(fallback_location: root_path, notice: 'Everything was fine!')

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170719190332) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
+    t.string "customer_id_braintree"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false

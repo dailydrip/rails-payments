@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :last_name
       t.string :phone
+      t.string :customer_id_braintree
 
       t.timestamps
     end
