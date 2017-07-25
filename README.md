@@ -1,24 +1,8 @@
-# README
+## Rails Payments
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### About DailyDrip
+![DailyDrip](dailydrip.png)
+>This code is part of [Rails
+>Drips](https://www.dailydrip.com/topics/rails/), a daily and continous
+>learning website where you can just spend 5min a day and learn things.
