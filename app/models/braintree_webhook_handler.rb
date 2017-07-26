@@ -28,7 +28,7 @@ class BraintreeWebhookHandler
   end
 
   def handle_subscription_canceled
-    Rails.logger.info "#{self.class.to_s} - #{__method__}"
+    Rails.logger.info "#{self.class} - #{__method__}"
     handle_common
   end
 
