@@ -1,5 +1,3 @@
-require 'braintree'
-
 class BraintreeWebhookHandler
   attr_reader :notification
 
