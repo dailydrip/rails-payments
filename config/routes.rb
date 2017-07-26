@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post '/subscriptions/subscribe' => 'subscriptions#subscribe'
   post '/subscriptions/custom_subscribe' => 'subscriptions#custom_subscribe'
 
+  post 'braintree_webhook' => 'braintree_webhook#webhook'
+
   resources :products, only: %i[index show]
   post '/products/buy' => 'products#buy'
   root to: 'products#index'

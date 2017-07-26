@@ -10,48 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719190332) do
-
+ActiveRecord::Schema.define(version: 20_170_719_190_332) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.money "amount", scale: 2, default: "0.0"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'products', force: :cascade do |t|
+    t.string 'name'
+    t.money 'amount', scale: 2, default: '0.0'
+    t.string 'image_url'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.string "plan_id"
-    t.money "amount", scale: 2
-    t.string "description"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  create_table 'subscriptions', force: :cascade do |t|
+    t.string 'plan_id'
+    t.money 'amount', scale: 2
+    t.string 'description'
+    t.bigint 'user_id'
+    t.string 'braintree_subscription_id'
+    t.string 'status'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_subscriptions_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "customer_id_braintree"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'phone'
+    t.string 'customer_id_braintree'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer 'sign_in_count', default: 0, null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.inet 'current_sign_in_ip'
+    t.inet 'last_sign_in_ip'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
-
 end

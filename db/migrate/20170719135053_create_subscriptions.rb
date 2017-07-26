@@ -5,6 +5,8 @@ class CreateSubscriptions < ActiveRecord::Migration[5.1]
       t.money :amount
       t.string :description
       t.belongs_to :user
+      t.string :braintree_subscription_id
+      t.string :status
       t.timestamps
     end
   end

@@ -6,8 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'braintree'
-gem 'gon'
 gem 'devise', git: 'https://github.com/plataformatec/devise'
+gem 'gon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'

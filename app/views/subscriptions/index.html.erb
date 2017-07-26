@@ -13,7 +13,7 @@
 
   <ul>
     <% @subscriptions.each do |subscription| %>
-      <li><%= subscription.plan_id %> - <%= subscription.amount %></li>
+      <li><%= subscription.plan_id %> - <%= subscription.amount %> - <%= subscription.status %></li>
     <% end %>
   </ul>
   <h1> Customised</h1>
