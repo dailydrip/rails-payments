@@ -37,7 +37,10 @@ class SubscriptionsController < ApplicationController
 
   private def handle_result_subscription(result)
     if result.success?
-      Subscription.create(amount: params[:amount], user: current_user, plan_id: params[:plan_id])
+      Subscription.create(amount: params[:amount], user: current_user,
+                          plan_id: result.subscription.plan_id,
+                          status: result.subscription.status,
+                          braintree_subscription_id: result.subscription.id )
       redirect_back(fallback_location: root_path, notice: 'Everything was fine!')
     else
       redirect_back(fallback_location: root_path, notice: 'Something went wrong! :/')
