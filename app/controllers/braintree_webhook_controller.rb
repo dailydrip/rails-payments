@@ -3,7 +3,7 @@ class BraintreeWebhookController < ApplicationController
 
   def webhook
     BraintreeWebhookHandler.new(current_user, bt_signature_param, bt_payload_param).call
-    render status: 200, text: ''
+    head :ok
   end
 
   private
