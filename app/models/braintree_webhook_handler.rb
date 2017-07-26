@@ -4,8 +4,7 @@ class BraintreeWebhookHandler
   delegate :subscription, to: :notification
   delegate :kind, to: :notification
 
-  def initialize(user, bt_signature, bt_payload)
-    @user = user
+  def initialize(bt_signature, bt_payload)
     @notification = Braintree::WebhookNotification.parse(
       bt_signature,
       bt_payload

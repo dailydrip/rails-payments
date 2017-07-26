@@ -2,7 +2,7 @@ class BraintreeWebhookController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def webhook
-    BraintreeWebhookHandler.new(current_user, bt_signature_param, bt_payload_param).call
+    BraintreeWebhookHandler.new(bt_signature_param, bt_payload_param).call
     head :ok
   end
 
