@@ -25,6 +25,17 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def invoice
+    if params[:transaction_id]
+      transaction = Braintree::Transaction.find(params[:transaction_id])
+      respond_to do |format|
+        format.pdf { send_invoice_pdf(transaction) }
+      end
+    else
+      redirect_to subscriptions_path, notice: 'No invoices yet'
+    end
+  end
+
   def subscribe
     result = Braintree::Subscription.create(
       payment_method_nonce: params[:payment_method_nonce],
@@ -34,11 +45,20 @@ class SubscriptionsController < ApplicationController
     handle_result_subscription(result)
   end
 
+  private def send_invoice_pdf(transaction)
+    invoice_pdf = BraintreeInvoice.new(transaction)
+    send_file invoice_pdf.to_pdf,
+      filename: invoice_pdf.filename,
+      type: 'application/pdf',
+      disposition: 'inline'
+  end
+
   private def handle_result_subscription(result)
     if result.success?
       Subscription.create(amount: params[:amount], user: current_user,
                           plan_id: result.subscription.plan_id,
                           status: result.subscription.status,
+                          braintree_transaction_id: result.subscription.transactions.last.id,
                           braintree_subscription_id: result.subscription.id)
       redirect_back(fallback_location: root_path, notice: 'Everything was fine!')
     else

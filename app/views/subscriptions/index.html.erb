@@ -13,9 +13,10 @@
 
   <ul>
     <% @subscriptions.each do |subscription| %>
-      <li><%= subscription.plan_id %> - <%= subscription.amount %> - <%= subscription.status %></li>
-    <% end %>
+      <li><%= subscription.plan_id %> - <%= subscription.amount %> - <%= subscription.status %> - <%= link_to "Get Invoice", invoice_pdf_path(format: 'pdf', transaction_id: subscription.braintree_transaction_id) %></li>
+      <% end %>
   </ul>
+
   <h1> Customised</h1>
   <h3> Subscribe to a plan </h3>
 
