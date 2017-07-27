@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invoice from Braintree</title>
+  <style>
+    body {
+      font-size: 3rem;
+      font-family: "Montserrat", Helvetica, sans-serif;
+    }
+    .invoice-billto {
+      display: flex;
+      margin-left: 2%;
+      margin-top: 4rem;
+    }
+    .invoice-billto div {
+      display: inline-block;
+      vertical-align: top;
+      width: 31.7%;
+    }
+    .invoice-billto h3 {
+      color: rgba(74, 74, 74, 0.6);
+      font-size: 4rem;
+      font-weight: 900;
+    }
+    .invoice-billto p {
+      color: rgba(74, 74, 74, 0.9);
+      font-family: "Montserrat", Helvetica, sans-serif;
+      font-size: .85rem;
+      margin: 0 auto;
+    }
+    .box {
+      border: 2px solid;
+      border-radius: 0.2rem;
+      padding 1rem;
+    }
+    .amount {
+      font-size: 5rem;
+    }
+  </style>
+  <meta charset="utf-8">
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

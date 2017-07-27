@@ -1,0 +1,26 @@
+<div class="invoice-header">
+  <h1> My Company name here</h1>
+</div>
+
+<div class="invoice-billto">
+  <div class"bill-to">
+    <h3> Customer Information</h3>
+    <ul>
+      <li><b><%= customer.first_name %> <%= customer.last_name %></b></li>
+      <li><b>Email:</b> <%= customer.email %></li>
+      <li><b>Phone:</b> <%= customer.phone %></li>
+      <li><b>Location:</b> <%= transaction.credit_card_details.customer_location %></li>
+    </ul>
+  </div>
+</div>
+
+<hr/>
+<h3>Details</h3>
+<div class="box">
+  <h4>Amount: <span class="amount"><%= transaction.amount %> USD</span></h4>
+  <div>
+    <b>Last 4 digits:</b> <%= card.last_4 %>
+    <b>Expiration date:</b> <%= card.expiration_date %>
+    <img src="<%=card.image_url%>"/>
+  </div>
+</div>

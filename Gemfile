@@ -9,6 +9,10 @@ gem 'braintree'
 gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'gon'
 
+# PDFs
+gem 'render_anywhere', require: false
+gem 'pdfkit' # HTML to PDF
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # postgres
@@ -42,6 +46,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'wkhtmltopdf-binary-edge', '~> 0.12.4.0' # PDFkit works on env development & test
 end
 
 group :development do
